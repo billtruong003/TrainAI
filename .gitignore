@@ -1,0 +1,29 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+
+# IDE
+.vs/
+.grad/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+
+# OS
+.DS_Store
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# ML-Agents local repo
+local_mlagents/
+results/
+

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d95fa1062d244288ea94fba6ef9b12, type: 3}
+  m_Name: NewArenaSettings
+  m_EditorClassIdentifier: Assembly-CSharp::ArenaSettings
+  PreRoundDelay: 0
+  PostRoundDelay: 0
+  MaxRoundTime: 60
+  MovementThrust: 35
+  RotationTorque: 15
+  MaxLinearSpeed: 6
+  AgentMass: 1
+  AgentDrag: 0.5
+  AgentAngularDrag: 2
+  FireCooldown: 1
+  BulletDamage: 10
+  BulletSpeed: 150
+  SpawnCheckRadius: 15
+  MaxSpawnAttempts: 10
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 192
+  WinReward: 1
+  LossPenalty: -1
+  TimePenalty: -0.0005
+  AccuracyReward: 0.5
+  DamagePenalty: 0.005
