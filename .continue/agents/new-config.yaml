@@ -1,0 +1,241 @@
+name: Gemini Proxy Config
+version: 1.0.0
+schema: v1
+models:
+  - name: "🚀 Codestral Latest"
+    model: "codestral-latest"
+    provider: mistral
+    apiKey: "jwAmH3oVZ3MlkCdaw0Ip61mZZWco3UOt"
+    contextLength: 32000
+  - name: "⚡ deep-research-pro-preview-12-2025"
+    model: "deep-research-pro-preview-12-2025"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ nano-banana-pro-preview"
+    model: "nano-banana-pro-preview"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-3-pro-image-preview"
+    model: "gemini-3-pro-image-preview"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-3-pro-preview"
+    model: "gemini-3-pro-preview"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-pro-latest"
+    model: "gemini-pro-latest"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-pro-preview-tts"
+    model: "gemini-2.5-pro-preview-tts"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-pro"
+    model: "gemini-2.5-pro"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-flash"
+    model: "gemini-2.5-flash"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.0-flash"
+    model: "gemini-2.0-flash"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.0-flash-001"
+    model: "gemini-2.0-flash-001"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.0-flash-exp-image-generation"
+    model: "gemini-2.0-flash-exp-image-generation"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.0-flash-lite-001"
+    model: "gemini-2.0-flash-lite-001"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.0-flash-lite"
+    model: "gemini-2.0-flash-lite"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-exp-1206"
+    model: "gemini-exp-1206"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-flash-preview-tts"
+    model: "gemini-2.5-flash-preview-tts"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemma-3-1b-it"
+    model: "gemma-3-1b-it"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemma-3-4b-it"
+    model: "gemma-3-4b-it"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemma-3-12b-it"
+    model: "gemma-3-12b-it"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemma-3-27b-it"
+    model: "gemma-3-27b-it"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemma-3n-e4b-it"
+    model: "gemma-3n-e4b-it"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemma-3n-e2b-it"
+    model: "gemma-3n-e2b-it"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-flash-latest"
+    model: "gemini-flash-latest"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-flash-lite-latest"
+    model: "gemini-flash-lite-latest"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-flash-lite"
+    model: "gemini-2.5-flash-lite"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-flash-image"
+    model: "gemini-2.5-flash-image"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-flash-preview-09-2025"
+    model: "gemini-2.5-flash-preview-09-2025"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-flash-lite-preview-09-2025"
+    model: "gemini-2.5-flash-lite-preview-09-2025"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-3-flash-preview"
+    model: "gemini-3-flash-preview"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-robotics-er-1.5-preview"
+    model: "gemini-robotics-er-1.5-preview"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+  - name: "⚡ gemini-2.5-computer-use-preview-10-2025"
+    model: "gemini-2.5-computer-use-preview-10-2025"
+    provider: openai
+    apiBase: "http://localhost:13337/v1"
+    apiKey: "sk-local-proxy"
+    contextLength: 128000
+
+tabAutocompleteModel:
+  title: "Codestral Autocomplete"
+  model: "codestral-latest"
+  provider: mistral
+  apiKey: "jwAmH3oVZ3MlkCdaw0Ip61mZZWco3UOt"
+
+tabAutocompleteOptions:
+  useCopyBuffer: true
+  useFileSuffix: true
+  maxPromptTokens: 2048
+  debounceDelay: 75
+  multilineCompletions: "always"
+  disableInFiles:
+    - "*.md"
+    - "*.txt"
+    - ".env"
+
+experimental:
+  modelRoles:
+    nextEdit:
+      provider: mistral
+      model: "codestral-latest"
+      apiKey: "jwAmH3oVZ3MlkCdaw0Ip61mZZWco3UOt"
+
+context:
+  - provider: open
+    params:
+      onlyPinned: false
+  - provider: currentFile
+  - provider: repo-map
+    params:
+      includeSignatures: true
+  - provider: code
+  - provider: tree
+  - provider: terminal
+  - provider: problems
+  - provider: diff
+  - provider: clipboard
+  - provider: debugger
+    params:
+      stackDepth: 5
+  - provider: os
+
+systemMessage: |
+  Bạn là một chuyên gia lập trình cao cấp. Luôn tuân thủ các nguyên tắc Clean Code (SOLID, DRY, KISS). 
+  Khi viết code:
+  1. Tuyệt đối không bao giờ thêm comment vào trong mã nguồn.
+  2. Mã nguồn phải luôn được tối ưu hóa hiệu suất và bộ nhớ ở mức cao nhất.
+  3. Cung cấp giải pháp toàn diện, hoàn thiện 100%, không viết code giả (placeholder) hoặc bỏ dở (lazy coding).
+  4. Luôn chủ động đề xuất kiến trúc tốt hơn nếu giải pháp hiện tại chưa tối ưu.
+  5. Code phải dễ đọc thông qua việc đặt tên biến và hàm tường minh thay vì dùng giải thích bằng chữ.
