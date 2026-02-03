@@ -20,4 +20,5 @@ public class PoolMember : MonoBehaviour
     }
 
     public int Key => poolKey;
+    public SmartPoolManager Manager => myPool;
 }

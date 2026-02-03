@@ -12,25 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d95fa1062d244288ea94fba6ef9b12, type: 3}
   m_Name: NewArenaSettings
   m_EditorClassIdentifier: Assembly-CSharp::ArenaSettings
-  PreRoundDelay: 0
-  PostRoundDelay: 0
+  PreRoundDelay: 5
+  PostRoundDelay: 3
   MaxRoundTime: 60
-  MovementThrust: 35
-  RotationTorque: 15
-  MaxLinearSpeed: 6
+  IsTrainingMode: 1
+  MovementThrust: 150
+  RotationTorque: 50
+  MaxLinearSpeed: 30
   AgentMass: 1
   AgentDrag: 0.5
   AgentAngularDrag: 2
-  FireCooldown: 1
+  FireCooldown: 0.2
   BulletDamage: 10
   BulletSpeed: 150
-  SpawnCheckRadius: 15
+  SpawnCheckRadius: 1.5
   MaxSpawnAttempts: 10
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 192
   WinReward: 1
-  LossPenalty: -1
-  TimePenalty: -0.0005
+  LossPenalty: -0.5
+  TimePenalty: -0.0001
   AccuracyReward: 0.5
-  DamagePenalty: 0.005
+  DamagePenalty: 0.02
+  EngineLoopClip: {fileID: 8300000, guid: 6861040be45121d4ab57c7ee4151fc14, type: 3}
+  ShootClip: {fileID: 8300000, guid: 92a79699f236d3341bd4f95d66f33bee, type: 3}
+  ImpactFleshClip: {fileID: 8300000, guid: 11390b4b43824e54e9eaada95422a366, type: 3}
+  ImpactWallClip: {fileID: 8300000, guid: 074cee5e8624aa4428300be00e1d2bd2, type: 3}
+  ExplosionClip: {fileID: 8300000, guid: 64fb9477894fa2e4a997518fbb1c2f15, type: 3}
+  CollisionClip: {fileID: 8300000, guid: b68fb8a8662027c49a4aaf5a77b35ad6, type: 3}
+  TeamA_Visuals:
+    MuzzleFlash: {fileID: 4986131355686987221, guid: 592ecd9fdeb4de9429b7de39cfabfea1, type: 3}
+    ImpactVFX: {fileID: 2099739669855538458, guid: 6104632fd456df6458a1076c1195fc1e, type: 3}
+    ExplosionVFX: {fileID: 5985756921296397980, guid: cad924abe5208d642bc7627d615adace, type: 3}
+    DamageSmoke: {fileID: 199316, guid: a2198d165c0270848aa01adeb1d27577, type: 3}
+  TeamB_Visuals:
+    MuzzleFlash: {fileID: 7912260070311797668, guid: 75ccae1efe6082c4b9c8351c166da148, type: 3}
+    ImpactVFX: {fileID: 6881173184844484111, guid: 3d2e77de248657d45b870930d0e22998, type: 3}
+    ExplosionVFX: {fileID: 4225930258669083112, guid: 86d58b6e181c774489a5a207c946febe, type: 3}
+    DamageSmoke: {fileID: 199316, guid: a2198d165c0270848aa01adeb1d27577, type: 3}

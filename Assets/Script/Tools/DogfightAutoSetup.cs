@@ -132,9 +132,9 @@ public class DogfightAutoSetup : EditorWindow
         soAgent.ApplyModifiedProperties();
 
         BehaviorParameters bp = GetOrAdd<BehaviorParameters>(obj);
-        bp.BehaviorName = "DogfightV2";
+        bp.BehaviorName = "AerialCombat"; // Matches YAML config
         bp.TeamId = teamId;
-        bp.BrainParameters.VectorObservationSize = 27;
+        bp.BrainParameters.VectorObservationSize = 18; // Updated to match DogfightAgent
         bp.BrainParameters.ActionSpec = new ActionSpec(4, new int[] { 2 });
 
         RayPerceptionSensorComponent3D rays = GetOrAdd<RayPerceptionSensorComponent3D>(obj);

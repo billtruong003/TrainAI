@@ -12,6 +12,36 @@ public class ThrusterController : MonoBehaviour
     {
         rb = targetRb;
         maxForce = forceLimit;
+
+        // Auto-Repair: Validate Thruster Points
+        ValidateThrusters();
+    }
+
+    private void ValidateThrusters()
+    {
+        if (thrusterPoints == null) thrusterPoints = new List<Transform>();
+
+        // Remove nulls
+        thrusterPoints.RemoveAll(t => t == null);
+
+        // If empty, try to find children named "Thruster_"
+        if (thrusterPoints.Count == 0)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.name.StartsWith("Thruster_"))
+                {
+                    thrusterPoints.Add(child);
+                }
+            }
+        }
+
+        // Last resort: Add transform itself just to prevent crash (though physics will be weird)
+        if (thrusterPoints.Count == 0)
+        {
+            Debug.LogWarning($"[ThrusterController] No thruster points found on {name}. Using self center.");
+            thrusterPoints.Add(transform);
+        }
     }
 
     public void ApplyThrust(float[] inputs)

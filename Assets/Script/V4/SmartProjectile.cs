@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SmartProjectile : MonoBehaviour
+public class SmartProjectile : MonoBehaviour, IPoolable
 {
     private Rigidbody rb;
     private float damage;
@@ -11,28 +11,36 @@ public class SmartProjectile : MonoBehaviour
 
     public int OwnerId => ownerId;
 
-    public void Launch(DogfightAgent owner, Vector3 startPos, Quaternion direction, float speed, float dmg, float lifeTime)
+    // IPoolable Interface
+    public void OnSpawn()
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
 
+    public void OnDespawn()
+    {
+        ownerRef = null;
+        ownerId = -1;
+    }
+
+    public void Launch(DogfightAgent owner, Vector3 startPos, Quaternion direction, float speed, float dmg, float lifeTime)
+    {
         ownerRef = owner;
         ownerId = owner.GetInstanceID();
         damage = dmg;
 
         transform.position = startPos;
         transform.rotation = direction;
-        gameObject.SetActive(true);
 
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
         rb.AddForce(transform.forward * speed, ForceMode.VelocityChange);
-
         despawnTime = Time.time + lifeTime;
     }
 
     private void Update()
     {
-        if (Time.time >= despawnTime) gameObject.SetActive(false);
+        if (Time.time >= despawnTime) ReturnToPool();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,11 +54,19 @@ public class SmartProjectile : MonoBehaviour
             agent.TakeDamage(damage);
             if (ownerRef != null) ownerRef.RegisterHit();
 
-            gameObject.SetActive(false);
+            ReturnToPool();
         }
         else
         {
-            gameObject.SetActive(false);
+            ReturnToPool();
         }
+    }
+
+    private void ReturnToPool()
+    {
+        if (TryGetComponent<PoolMember>(out var member))
+            member.ReturnToPool();
+        else
+            gameObject.SetActive(false);
     }
 }

@@ -42,11 +42,19 @@ public class SmartPoolManager : MonoBehaviour
         PoolMember member = null;
 
         // 2. Lay tu pool hoac tao moi
-        if (pools[key].Count > 0)
+        while (pools[key].Count > 0)
         {
             member = pools[key].Dequeue();
+            // Validation: Check if object is still alive
+            if (member != null && member.gameObject != null)
+            {
+                break;
+            }
+            // If null/destroyed, loop continues to dequeue next item
         }
-        else
+
+        // If pool empty or all items were dead, create new
+        if (member == null || member.gameObject == null)
         {
             GameObject obj = Instantiate(prefab, poolRoot);
             member = obj.AddComponent<PoolMember>();

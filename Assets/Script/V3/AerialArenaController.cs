@@ -14,8 +14,15 @@ public class AerialArenaController : MonoBehaviour
     [SerializeField] private CombatAgentUnit agentA;
     [SerializeField] private CombatAgentUnit agentB;
 
+
     private SmartPoolManager _poolManager;
     private MatchState _currentState;
+
+    public CombatAgentUnit AgentA => agentA;
+    public CombatAgentUnit AgentB => agentB;
+
+    public int ScoreA { get; private set; }
+    public int ScoreB { get; private set; }
 
     public SmartPoolManager Pool => _poolManager;
 
@@ -27,7 +34,8 @@ public class AerialArenaController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GameLoop());
+        // StartCoroutine(GameLoop()); // Old Loop
+        StartCoroutine(SessionLoop());
     }
 
     private void InitializeAgents()
@@ -39,54 +47,72 @@ public class AerialArenaController : MonoBehaviour
         agentB.SetTarget(agentA.transform);
     }
 
-    private IEnumerator GameLoop()
+    private IEnumerator SessionLoop()
     {
         while (true)
         {
             _currentState = MatchState.Initializing;
             _poolManager.DespawnAll();
 
-            SpawnAgent(agentA, teamASpawn);
-            SpawnAgent(agentB, teamBSpawn);
+            agentA.gameObject.SetActive(false);
+            agentB.gameObject.SetActive(false);
+
+            SpawnAgent(agentA, teamASpawn, teamBSpawn.transform.position);
+            SpawnAgent(agentB, teamBSpawn, teamASpawn.transform.position);
 
             agentA.gameObject.SetActive(true);
             agentB.gameObject.SetActive(true);
 
-            if (settings.PreRoundDelay > 0)
-                yield return new WaitForSeconds(settings.PreRoundDelay);
+            // Enforce delay in Play Mode, Disable in Training
+            float preDelay = settings.PreRoundDelay;
+            if (settings.IsTrainingMode)
+                preDelay = 0f;
+            else if (preDelay < 2f)
+                preDelay = 3f;
+
+            if (preDelay > 0)
+                yield return new WaitForSeconds(preDelay);
 
             _currentState = MatchState.Combat;
             agentA.BeginRound();
             agentB.BeginRound();
 
             float matchTime = 0f;
-            while (matchTime < settings.MaxRoundTime && IsMatchActive())
+            while (_currentState == MatchState.Combat)
             {
+                // If Training: Check Time Limit. If Play: Infinite Time.
+                if (settings.IsTrainingMode && matchTime >= settings.MaxRoundTime) break;
+
                 matchTime += Time.deltaTime;
                 yield return null;
+            }
+
+            if (_currentState == MatchState.Combat)
+            {
+                agentA.AddReward(-0.1f);
+                agentB.AddReward(-0.1f);
+                agentA.EndEpisode();
+                agentB.EndEpisode();
             }
 
             _currentState = MatchState.Resolution;
             agentA.EndRound();
             agentB.EndRound();
 
-            if (IsMatchActive())
-            {
-                agentA.AddReward(0f);
-                agentB.AddReward(0f);
-            }
+            float postDelay = settings.PostRoundDelay;
+            if (settings.IsTrainingMode)
+                postDelay = 0f;
+            else if (postDelay < 2f)
+                postDelay = 2f;
 
-            agentA.EndEpisode();
-            agentB.EndEpisode();
-
-            if (settings.PostRoundDelay > 0)
-                yield return new WaitForSeconds(settings.PostRoundDelay);
+            if (postDelay > 0)
+                yield return new WaitForSeconds(postDelay);
             else
-                yield return null; // Wait 1 frame to reset physics properly
+                yield return null;
         }
     }
 
-    private void SpawnAgent(CombatAgentUnit agent, SpawnVolume volume)
+    private void SpawnAgent(CombatAgentUnit agent, SpawnVolume volume, Vector3 lookAtTarget)
     {
         Vector3 pos = volume.GetSafeSpawnPosition(
             settings.SpawnCheckRadius,
@@ -94,7 +120,11 @@ public class AerialArenaController : MonoBehaviour
             settings.MaxSpawnAttempts
         );
 
-        Quaternion rot = Quaternion.LookRotation(Vector3.zero - pos);
+        Vector3 dir = lookAtTarget - pos;
+        dir.y = 0;
+        if (dir.sqrMagnitude < 0.01f) dir = Vector3.forward;
+
+        Quaternion rot = Quaternion.LookRotation(dir);
         agent.PrepareForRound(pos, rot);
     }
 
@@ -105,22 +135,20 @@ public class AerialArenaController : MonoBehaviour
 
     public void NotifyAgentDied(CombatAgentUnit victim)
     {
-        // Neu dang trong tran ma chet -> Ket thuc ngay lap tuc
         if (_currentState != MatchState.Combat) return;
 
         CombatAgentUnit winner = (victim == agentA) ? agentB : agentA;
 
-        // 1. Thuong cho nguoi chien thang
         winner.AddReward(settings.WinReward);
 
-        // 2. QUAN TRONG: Goi EndEpisode cho CA HAI de chot so Neural Network
-        // Neu khong goi, AI se khong biet la tran dau da ket thuc
+        // Track Score (Only useful in Play Mode)
+        if (winner == agentA) ScoreA++; else ScoreB++;
+        if (!settings.IsTrainingMode) Debug.Log($"<color=yellow>SCORE UPDATE: Team A ({ScoreA}) - Team B ({ScoreB})</color>");
+
         victim.EndEpisode();
         winner.EndEpisode();
 
-        // 3. Force End Round immediately & Reset Physics
-        StopAllCoroutines();
-        StartCoroutine(GameLoop());
+        _currentState = MatchState.Resolution;
     }
 }
 public enum MatchState
