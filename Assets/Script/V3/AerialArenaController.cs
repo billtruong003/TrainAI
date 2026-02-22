@@ -13,7 +13,8 @@ public class AerialArenaController : MonoBehaviour
     [Header("Agents")]
     [SerializeField] private CombatAgentUnit agentA;
     [SerializeField] private CombatAgentUnit agentB;
-
+    [Header("Cinematics")]
+    [SerializeField] private AerialCinematicCamera cinematicCamera;
 
     private SmartPoolManager _poolManager;
     private MatchState _currentState;
@@ -23,6 +24,8 @@ public class AerialArenaController : MonoBehaviour
 
     public int ScoreA { get; private set; }
     public int ScoreB { get; private set; }
+    public int MatchCount { get; private set; }
+    public MatchState CurrentState => _currentState;
 
     public SmartPoolManager Pool => _poolManager;
 
@@ -73,6 +76,7 @@ public class AerialArenaController : MonoBehaviour
             if (preDelay > 0)
                 yield return new WaitForSeconds(preDelay);
 
+            MatchCount++;
             _currentState = MatchState.Combat;
             agentA.BeginRound();
             agentB.BeginRound();
@@ -128,6 +132,14 @@ public class AerialArenaController : MonoBehaviour
         agent.PrepareForRound(pos, rot);
     }
 
+    private IEnumerator HitStopEffect()
+    {
+        // Slow motion trong 1.5s thuc te
+        Time.timeScale = 0.1f;
+        yield return new WaitForSecondsRealtime(1.5f);
+        Time.timeScale = 1f;
+    }
+
     private bool IsMatchActive()
     {
         return agentA.IsAlive && agentB.IsAlive;
@@ -143,7 +155,12 @@ public class AerialArenaController : MonoBehaviour
 
         // Track Score (Only useful in Play Mode)
         if (winner == agentA) ScoreA++; else ScoreB++;
-        if (!settings.IsTrainingMode) Debug.Log($"<color=yellow>SCORE UPDATE: Team A ({ScoreA}) - Team B ({ScoreB})</color>");
+        if (!settings.IsTrainingMode)
+        {
+            Debug.Log($"<color=yellow>SCORE UPDATE: Team A ({ScoreA}) - Team B ({ScoreB})</color>");
+            if (cinematicCamera != null) cinematicCamera.TriggerImpactEffect();
+            StartCoroutine(HitStopEffect());
+        }
 
         victim.EndEpisode();
         winner.EndEpisode();

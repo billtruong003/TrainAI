@@ -8,11 +8,12 @@ TagManager:
   - Wall
   - Ground
   - Ignore Raycast
+  - Projectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Agent

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13d4f01167ca104ca621cfaaaa6c653, type: 3}
+  m_Name: Pose_20260208_151000
+  m_EditorClassIdentifier: Assembly-CSharp::RagdollPoseData
+  poseName: Default
+  boneSnapshots:
+  - boneName: spine_02
+    localRotation: {x: 0.0000000019682742, y: -0.000000044026425, z: -0.024309179, w: 0.99970454}
+  - boneName: upperarm_l
+    localRotation: {x: -0.0100861145, y: -0.036951534, z: -0.011973186, w: 0.99919444}
+  - boneName: lowerarm_l
+    localRotation: {x: -7.414464e-17, y: 4.6934085e-14, z: 0.033878356, w: 0.99942595}
+  - boneName: hand_l
+    localRotation: {x: -0.7071068, y: -1.596662e-14, z: 2.7264898e-14, w: 0.7071068}
+  - boneName: upperarm_r
+    localRotation: {x: -0.036951292, y: -0.010065555, z: 0.9991947, w: -0.011973949}
+  - boneName: lowerarm_r
+    localRotation: {x: -1.2477259e-15, y: 1.2158505e-10, z: -0.033878356, w: 0.99942595}
+  - boneName: hand_r
+    localRotation: {x: -0.7071068, y: 8.5973575e-11, z: 8.59295e-11, w: 0.7071068}
+  - boneName: head
+    localRotation: {x: -0.000000070934234, y: -0.00000036962192, z: -0.1475167, w: 0.98905957}
+  - boneName: thigh_l
+    localRotation: {x: 0.9999093, y: 0.009337232, z: 0.00971072, w: 0.000042726864}
+  - boneName: calf_l
+    localRotation: {x: -6.5003274e-11, y: 0.0000006645675, z: 0.050290126, w: 0.99873465}
+  - boneName: foot_l
+    localRotation: {x: -0.00039777183, y: -0.009703209, z: -0.04095968, w: 0.9991136}
+  - boneName: thigh_r
+    localRotation: {x: -0.009336888, y: 0.9999093, z: 0.000042725293, w: -0.009710718}
+  - boneName: calf_r
+    localRotation: {x: -6.5004745e-11, y: 0.0000006645675, z: 0.05029121, w: 0.9987346}
+  - boneName: foot_r
+    localRotation: {x: -0.0003977857, y: -0.009703209, z: -0.04096111, w: 0.99911356}

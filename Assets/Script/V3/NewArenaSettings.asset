@@ -15,7 +15,7 @@ MonoBehaviour:
   PreRoundDelay: 5
   PostRoundDelay: 3
   MaxRoundTime: 60
-  IsTrainingMode: 1
+  IsTrainingMode: 0
   MovementThrust: 150
   RotationTorque: 50
   MaxLinearSpeed: 30
