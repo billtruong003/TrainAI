@@ -10,6 +10,7 @@
   <Project Path="Unity.Mathematics.csproj" />
   <Project Path="Unity.Timeline.Editor.csproj" />
   <Project Path="Unity.Cinemachine.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Multiplayer.Center.Editor.csproj" />
   <Project Path="Unity.2D.Psdimporter.Editor.csproj" />
   <Project Path="UnityEngine.UI.csproj" />
@@ -40,7 +41,6 @@
   <Project Path="Unity.2D.Animation.Editor.csproj" />
   <Project Path="Unity.ML-Agents.Editor.Input.csproj" />
   <Project Path="Unity.Searcher.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InferenceEngine.Tokenization.csproj" />
   <Project Path="Unity.2D.SpriteShape.Runtime.csproj" />
   <Project Path="Unity.ML-Agents.CommunicatorObjects.csproj" />

@@ -142,7 +142,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighlightThreshold: 0.63
+    - _HighlightThreshold: 0.6
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -155,7 +155,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _ToonSmoothness: 0.001
-    - _ToonThreshold: 0.36
+    - _ToonThreshold: 0.05
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
@@ -168,7 +168,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Grey: {r: 0.59748423, g: 0.59748423, b: 0.59748423, a: 0}
     - _MidtoneColor: {r: 0.9150943, g: 0.876246, b: 0.876246, a: 1}
-    - _ShadowTint: {r: 0.6132076, g: 0.41941082, b: 0.41941082, a: 1}
+    - _ShadowTint: {r: 0.49056602, g: 0.34478462, b: 0.34478462, a: 1}
     - _SkinColor: {r: 1, g: 0.037986055, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
